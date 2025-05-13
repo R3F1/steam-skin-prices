@@ -70,6 +70,17 @@
       font-weight: 600;
     }
 
+    .faceit { color: #f50; }
+    .csfloat { color: #66fcf1; }
+    .steam { color: #66c0f4; }
+    .youtube { color: #ff0000; }
+    .dmarket { color: #00ffae; }
+    .leetify { color: #20c997; }
+    .csstats { color: #c084fc; }
+    .teamspeak { color: #7289da; }
+    .faceittracker { color: #ffb347; }
+    .discord { color: #5865F2; }
+
     .stats {
       margin-top: 40px;
       background-color: #161b22;
@@ -108,6 +119,32 @@
       text-shadow: 0 0 5px rgba(88,166,255,0.5), 0 0 10px rgba(88,166,255,0.3);
     }
 
+    /* Widget Container */
+    .widget-container {
+      width: 100%;
+      max-width: 800px;
+      margin-top: 30px;
+      background-color: #161b22;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    .widget-container iframe {
+      width: 100%;
+      height: 500px; /* Ustalmy wysokość widgetu */
+      border: none;
+      border-radius: 12px;
+    }
+
+    .widget-title {
+      text-align: center;
+      color: #58a6ff;
+      font-size: 24px;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
     @keyframes fadeUp {
       from {
         transform: translateY(20px);
@@ -142,32 +179,12 @@
         text-shadow: 0 0 5px rgba(88,166,255,0.5), 0 0 10px rgba(88,166,255,0.3);
       }
     }
-
-    .widget-container {
-      text-align: center;
-      width: 100%;
-      max-width: 800px;
-      margin-top: 40px;
-    }
-
-    .widget-container h2 {
-      font-size: 24px;
-      color: #58a6ff;
-      margin-bottom: 15px;
-    }
-
-    iframe {
-      width: 100%;
-      height: 300px;
-      border: none;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    }
   </style>
 </head>
 <body>
   <h1>Strefa Gracza REFI</h1>
   <div class="grid">
+    <!-- Przyciskami -->
     <a class="tile faceit" href="https://www.faceit.com/en/players/R3F1_" target="_blank" style="--i:1">
       <i class="fa-solid fa-gamepad"></i>
       <span>Faceit</span>
@@ -210,10 +227,17 @@
     </a>
   </div>
 
-  <!-- Osadzenie widgetu Strugly z napisem -->
+  <!-- Widget -->
   <div class="widget-container">
-    <h2>FACEIT LAST MATCH STATS</h2>
-    <iframe src="https://strugly.com/inc/widget.php?widget_type=widget-renew-2&player=e07d12cd-82c7-4d03-b1eb-4a3f0eec2724&secret=b744818a49a7703d18108d2d39fbc29d"></iframe>
+    <div class="widget-title">FACEIT LAST MATCH STATS</div>
+    <iframe src="https://strugly.com/inc/widget.php?widget_type=widget-renew-2&player=e07d12cd-82c7-4d03-b1eb-4a3f0eec2724&secret=b744818a49a7703d18108d2d39fbc29d" 
+      title="FACEIT Stats Widget"></iframe>
+  </div>
+
+  <div class="stats">
+    <h2>Statystyki CSStats.gg</h2>
+    <p>Poziom: <strong>10</strong></p>
+    <p>K/D: <strong>1.25</strong></p>
   </div>
 
   <footer class="designed-by">designed by <strong>REFI</strong></footer>
