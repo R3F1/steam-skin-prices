@@ -2,25 +2,28 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8">
-  <title>Moje Bezpieczne Linki</title>
+  <title>Strefa Gracza REFI</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Ikony z FontAwesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background-color: #121212;
-      color: #fff;
+      background-color: #0d1117;
+      color: #c9d1d9;
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 30px 15px;
+      overflow-x: hidden;
     }
 
     h1 {
       margin-bottom: 30px;
       text-align: center;
+      font-size: 36px;
+      color: #58a6ff;
+      animation: fadeIn 1s ease-out;
     }
 
     .grid {
@@ -28,48 +31,74 @@
       grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
       gap: 20px;
       width: 100%;
-      max-width: 700px;
+      max-width: 800px;
     }
 
     .tile {
-      background-color: #1e1e1e;
+      background-color: #161b22;
       border-radius: 12px;
       padding: 20px;
       text-align: center;
-      transition: background-color 0.3s;
       text-decoration: none;
-      color: #fff;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      color: inherit;
+      transition: transform 0.2s, box-shadow 0.3s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      animation: fadeUp 0.6s ease forwards;
+      opacity: 0;
     }
 
+    .tile:nth-child(1) { animation-delay: 0.1s; }
+    .tile:nth-child(2) { animation-delay: 0.2s; }
+    .tile:nth-child(3) { animation-delay: 0.3s; }
+    .tile:nth-child(4) { animation-delay: 0.4s; }
+    .tile:nth-child(5) { animation-delay: 0.5s; }
+    .tile:nth-child(6) { animation-delay: 0.6s; }
+    .tile:nth-child(7) { animation-delay: 0.7s; }
+    .tile:nth-child(8) { animation-delay: 0.8s; }
+
     .tile:hover {
-      background-color: #2c2c2c;
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.4);
     }
 
     .tile i {
       font-size: 32px;
       margin-bottom: 10px;
+      display: block;
     }
 
     .tile span {
       display: block;
       margin-top: 5px;
-      font-weight: 500;
+      font-weight: 600;
     }
+
+    .faceit { color: #f50; }
+    .csfloat { color: #66fcf1; }
+    .steam { color: #66c0f4; }
+    .youtube { color: #ff0000; }
+    .dmarket { color: #00ffae; }
+    .leetify { color: #20c997; }
+    .csstats { color: #c084fc; }
+    .teamspeak { color: #7289da; }
 
     .stats {
       margin-top: 40px;
-      background-color: #1e1e1e;
+      background-color: #161b22;
       padding: 20px;
       border-radius: 12px;
       max-width: 700px;
       width: 100%;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      animation: fadeUp 1s ease forwards;
+      opacity: 0;
+      animation-delay: 1s;
     }
 
     .stats h2 {
       margin-bottom: 15px;
       text-align: center;
+      color: #58a6ff;
     }
 
     .stats p {
@@ -77,38 +106,64 @@
       font-size: 18px;
       text-align: center;
     }
+
+    @keyframes fadeUp {
+      from {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
   </style>
 </head>
 <body>
-  <h1>Moje Bezpieczne Linki</h1>
+  <h1>Strefa Gracza REFI</h1>
   <div class="grid">
-    <a class="tile" href="https://www.faceit.com/en/players/R3F1_" target="_blank">
+    <a class="tile faceit" href="https://www.faceit.com/en/players/R3F1_" target="_blank">
       <i class="fa-solid fa-gamepad"></i>
       <span>Faceit</span>
     </a>
-    <a class="tile" href="https://csfloat.com/" target="_blank">
+    <a class="tile csfloat" href="https://csfloat.com/" target="_blank">
       <i class="fa-solid fa-box-open"></i>
       <span>CSFloat</span>
     </a>
-    <a class="tile" href="https://steamcommunity.com/id/REFIs/" target="_blank">
+    <a class="tile steam" href="https://steamcommunity.com/id/REFIs/" target="_blank">
       <i class="fa-brands fa-steam"></i>
       <span>Steam</span>
     </a>
-    <a class="tile" href="https://youtube.com/@refi5278?si=63-azVxVLMUA4LD_" target="_blank">
+    <a class="tile youtube" href="https://youtube.com/@refi5278?si=63-azVxVLMUA4LD_" target="_blank">
       <i class="fa-brands fa-youtube"></i>
       <span>YouTube</span>
     </a>
-    <a class="tile" href="https://dmarket.com/pl" target="_blank">
+    <a class="tile dmarket" href="https://dmarket.com/pl" target="_blank">
       <i class="fa-solid fa-store"></i>
       <span>DMarket</span>
     </a>
-    <a class="tile" href="https://leetify.com/app/profile/76561198819835529" target="_blank">
+    <a class="tile leetify" href="https://leetify.com/app/profile/76561198819835529" target="_blank">
       <i class="fa-solid fa-chart-line"></i>
       <span>Leetify</span>
     </a>
-    <a class="tile" href="https://csstats.gg/player/76561198819835529" target="_blank">
+    <a class="tile csstats" href="https://csstats.gg/player/76561198819835529" target="_blank">
       <i class="fa-solid fa-chart-simple"></i>
       <span>CSStats</span>
+    </a>
+    <a class="tile teamspeak" href="ts3server://4gamers.gclan.pl" target="_blank">
+      <i class="fa-solid fa-headset"></i>
+      <span>TeamSpeak</span>
     </a>
   </div>
 
