@@ -47,14 +47,9 @@
       opacity: 0;
     }
 
-    .tile:nth-child(1) { animation-delay: 0.1s; }
-    .tile:nth-child(2) { animation-delay: 0.2s; }
-    .tile:nth-child(3) { animation-delay: 0.3s; }
-    .tile:nth-child(4) { animation-delay: 0.4s; }
-    .tile:nth-child(5) { animation-delay: 0.5s; }
-    .tile:nth-child(6) { animation-delay: 0.6s; }
-    .tile:nth-child(7) { animation-delay: 0.7s; }
-    .tile:nth-child(8) { animation-delay: 0.8s; }
+    .tile:nth-child(n) {
+      animation-delay: calc(0.1s * var(--i));
+    }
 
     .tile:hover {
       transform: scale(1.05);
@@ -81,6 +76,8 @@
     .leetify { color: #20c997; }
     .csstats { color: #c084fc; }
     .teamspeak { color: #7289da; }
+    .faceittracker { color: #ffb347; }
+    .discord { color: #5865F2; }
 
     .stats {
       margin-top: 40px;
@@ -105,6 +102,15 @@
       margin: 5px 0;
       font-size: 18px;
       text-align: center;
+    }
+
+    .player-image {
+      margin-top: 30px;
+      max-width: 300px;
+      width: 90%;
+      border-radius: 16px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+      animation: fadeIn 1.5s ease;
     }
 
     @keyframes fadeUp {
@@ -133,37 +139,45 @@
 <body>
   <h1>Strefa Gracza REFI</h1>
   <div class="grid">
-    <a class="tile faceit" href="https://www.faceit.com/en/players/R3F1_" target="_blank">
+    <a class="tile faceit" href="https://www.faceit.com/en/players/R3F1_" target="_blank" style="--i:1">
       <i class="fa-solid fa-gamepad"></i>
       <span>Faceit</span>
     </a>
-    <a class="tile csfloat" href="https://csfloat.com/" target="_blank">
+    <a class="tile csfloat" href="https://csfloat.com/" target="_blank" style="--i:2">
       <i class="fa-solid fa-box-open"></i>
       <span>CSFloat</span>
     </a>
-    <a class="tile steam" href="https://steamcommunity.com/id/REFIs/" target="_blank">
+    <a class="tile steam" href="https://steamcommunity.com/id/REFIs/" target="_blank" style="--i:3">
       <i class="fa-brands fa-steam"></i>
       <span>Steam</span>
     </a>
-    <a class="tile youtube" href="https://youtube.com/@refi5278?si=63-azVxVLMUA4LD_" target="_blank">
+    <a class="tile youtube" href="https://youtube.com/@refi5278?si=63-azVxVLMUA4LD_" target="_blank" style="--i:4">
       <i class="fa-brands fa-youtube"></i>
       <span>YouTube</span>
     </a>
-    <a class="tile dmarket" href="https://dmarket.com/pl" target="_blank">
+    <a class="tile dmarket" href="https://dmarket.com/pl" target="_blank" style="--i:5">
       <i class="fa-solid fa-store"></i>
       <span>DMarket</span>
     </a>
-    <a class="tile leetify" href="https://leetify.com/app/profile/76561198819835529" target="_blank">
+    <a class="tile leetify" href="https://leetify.com/app/profile/76561198819835529" target="_blank" style="--i:6">
       <i class="fa-solid fa-chart-line"></i>
       <span>Leetify</span>
     </a>
-    <a class="tile csstats" href="https://csstats.gg/player/76561198819835529" target="_blank">
+    <a class="tile csstats" href="https://csstats.gg/player/76561198819835529" target="_blank" style="--i:7">
       <i class="fa-solid fa-chart-simple"></i>
       <span>CSStats</span>
     </a>
-    <a class="tile teamspeak" href="ts3server://4gamers.gclan.pl" target="_blank">
+    <a class="tile teamspeak" href="ts3server://4gamers.gclan.pl" target="_blank" style="--i:8">
       <i class="fa-solid fa-headset"></i>
       <span>TeamSpeak</span>
+    </a>
+    <a class="tile faceittracker" href="https://faceittracker.net/" target="_blank" style="--i:9">
+      <i class="fa-solid fa-magnifying-glass-chart"></i>
+      <span>FaceitTracker</span>
+    </a>
+    <a class="tile discord" href="https://discord.gg/u42ema3G" target="_blank" style="--i:10">
+      <i class="fa-brands fa-discord"></i>
+      <span>Discord</span>
     </a>
   </div>
 
@@ -172,5 +186,7 @@
     <p>Poziom: <strong>10</strong></p>
     <p>K/D: <strong>1.25</strong></p>
   </div>
+
+  <img src="data:image/png;base64,{{IMAGE_BASE64}}" alt="REFI Avatar" class="player-image">
 </body>
 </html>
