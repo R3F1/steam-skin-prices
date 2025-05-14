@@ -5,227 +5,164 @@
   <title>Strefa Gracza REFI</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #0d1117 0%, #1c1f26 100%);
+      font-family: 'Inter', sans-serif;
+      background-color: #0d1117;
       color: #c9d1d9;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 30px 15px;
+      padding: 40px 20px;
       min-height: 100vh;
-      position: relative;
-      overflow-x: hidden;
     }
 
-    h1 {
-      margin-bottom: 30px;
+    header {
       text-align: center;
-      font-size: 36px;
+      margin-bottom: 40px;
+    }
+
+    header h1 {
+      font-size: 32px;
       color: #58a6ff;
-      animation: fadeIn 1s ease-out;
+      margin-bottom: 5px;
+    }
+
+    header p {
+      font-size: 16px;
+      color: #8b949e;
+      border-bottom: 1px solid #30363d;
+      padding-bottom: 10px;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
       gap: 20px;
       width: 100%;
-      max-width: 800px;
+      max-width: 900px;
     }
 
     .tile {
       background-color: #161b22;
-      border-radius: 12px;
-      padding: 20px;
+      border-radius: 10px;
+      padding: 25px 20px;
       text-align: center;
       text-decoration: none;
       color: inherit;
-      transition: transform 0.2s, box-shadow 0.3s;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      animation: fadeUp 0.6s ease forwards;
-      opacity: 0;
-    }
-
-    .tile:nth-child(n) {
-      animation-delay: calc(0.1s * var(--i));
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
 
     .tile:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
     }
 
     .tile i {
-      font-size: 32px;
+      font-size: 26px;
       margin-bottom: 10px;
-      display: block;
+      color: #58a6ff;
     }
 
     .tile span {
-      display: block;
-      margin-top: 5px;
       font-weight: 600;
+      font-size: 15px;
     }
 
-    .faceit { color: #f50; }
-    .csfloat { color: #66fcf1; }
-    .steam { color: #66c0f4; }
-    .youtube { color: #ff0000; }
-    .dmarket { color: #00ffae; }
-    .leetify { color: #20c997; }
-    .csstats { color: #c084fc; }
-    .teamspeak { color: #7289da; }
-    .faceittracker { color: #ffb347; }
-    .discord { color: #5865F2; }
-
-    .stats {
-      margin-top: 40px;
+    .stats, .widget-container {
+      margin-top: 50px;
       background-color: #161b22;
-      padding: 20px;
-      border-radius: 12px;
-      max-width: 700px;
+      padding: 25px;
+      border-radius: 10px;
       width: 100%;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      animation: fadeUp 1s ease forwards;
-      opacity: 0;
-      animation-delay: 1s;
+      max-width: 700px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
 
-    .stats h2 {
-      margin-bottom: 15px;
-      text-align: center;
+    .stats h2,
+    .widget-container h2 {
+      font-size: 20px;
       color: #58a6ff;
+      margin-bottom: 15px;
     }
 
     .stats p {
+      font-size: 17px;
       margin: 5px 0;
-      font-size: 18px;
-      text-align: center;
-    }
-
-    .widget-container {
-      margin-top: 50px;
-      background-color: #161b22;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      width: 100%;
-      max-width: 350px;
-      text-align: center;
-    }
-
-    .widget-container h2 {
-      color: #58a6ff;
-      margin-bottom: 20px;
-      font-size: 24px;
-    }
-
-    .widget-inner {
-      display: flex;
-      justify-content: center;
     }
 
     .widget-inner iframe {
       width: 100%;
-      max-width: 350px;
       height: 100px;
       border: none;
     }
 
-    footer.designed-by {
-      margin-top: auto;
-      padding: 30px 0 10px;
-      font-size: 16px;
-      color: #8b949e;
-      text-transform: uppercase;
-      letter-spacing: 2px;
+    footer {
+      margin-top: 60px;
       text-align: center;
+      font-size: 14px;
+      color: #8b949e;
+      padding-bottom: 20px;
+    }
+
+    .button-link {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 10px 20px;
+      background-color: #238636;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
       font-weight: bold;
-      animation: fadeGlow 3s ease-out;
-      text-shadow: 0 0 5px rgba(88,166,255,0.5), 0 0 10px rgba(88,166,255,0.3);
+      transition: background-color 0.3s;
     }
 
-    @keyframes fadeUp {
-      from {
-        transform: translateY(20px);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: scale(0.95);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    @keyframes fadeGlow {
-      0% {
-        opacity: 0;
-        transform: translateY(10px);
-        text-shadow: none;
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-        text-shadow: 0 0 5px rgba(88,166,255,0.5), 0 0 10px rgba(88,166,255,0.3);
-      }
+    .button-link:hover {
+      background-color: #2ea043;
     }
   </style>
 </head>
 <body>
-  <h1>Strefa Gracza REFI</h1>
+
+  <header>
+    <h1>Strefa Gracza REFI</h1>
+    <p>Twoje centrum statystyk i linków</p>
+  </header>
+
   <div class="grid">
-    <a class="tile faceit" href="https://www.faceit.com/en/players/R3F1_" target="_blank" style="--i:1">
-      <i class="fa-solid fa-gamepad"></i>
-      <span>Faceit</span>
+    <a class="tile" href="https://www.faceit.com/en/players/R3F1_" target="_blank">
+      <i class="fa-solid fa-gamepad"></i><span>Faceit</span>
     </a>
-    <a class="tile csfloat" href="https://csfloat.com/" target="_blank" style="--i:2">
-      <i class="fa-solid fa-box-open"></i>
-      <span>CSFloat</span>
+    <a class="tile" href="https://csfloat.com/" target="_blank">
+      <i class="fa-solid fa-box-open"></i><span>CSFloat</span>
     </a>
-    <a class="tile steam" href="https://steamcommunity.com/id/REFIs/" target="_blank" style="--i:3">
-      <i class="fa-brands fa-steam"></i>
-      <span>Steam</span>
+    <a class="tile" href="https://steamcommunity.com/id/REFIs/" target="_blank">
+      <i class="fa-brands fa-steam"></i><span>Steam</span>
     </a>
-    <a class="tile youtube" href="https://youtube.com/@refi5278?si=63-azVxVLMUA4LD_" target="_blank" style="--i:4">
-      <i class="fa-brands fa-youtube"></i>
-      <span>YouTube</span>
+    <a class="tile" href="https://youtube.com/@refi5278" target="_blank">
+      <i class="fa-brands fa-youtube"></i><span>YouTube</span>
     </a>
-    <a class="tile dmarket" href="https://dmarket.com/pl" target="_blank" style="--i:5">
-      <i class="fa-solid fa-store"></i>
-      <span>DMarket</span>
+    <a class="tile" href="https://dmarket.com/pl" target="_blank">
+      <i class="fa-solid fa-store"></i><span>DMarket</span>
     </a>
-    <a class="tile leetify" href="https://leetify.com/app/profile/76561198819835529" target="_blank" style="--i:6">
-      <i class="fa-solid fa-chart-line"></i>
-      <span>Leetify</span>
+    <a class="tile" href="https://leetify.com/app/profile/76561198819835529" target="_blank">
+      <i class="fa-solid fa-chart-line"></i><span>Leetify</span>
     </a>
-    <a class="tile csstats" href="https://csstats.gg/player/76561198819835529" target="_blank" style="--i:7">
-      <i class="fa-solid fa-chart-simple"></i>
-      <span>CSStats</span>
+    <a class="tile" href="https://csstats.gg/player/76561198819835529" target="_blank">
+      <i class="fa-solid fa-chart-simple"></i><span>CSStats</span>
     </a>
-    <a class="tile teamspeak" href="ts3server://4gamers.gclan.pl" target="_blank" style="--i:8">
-      <i class="fa-solid fa-headset"></i>
-      <span>TeamSpeak</span>
+    <a class="tile" href="ts3server://4gamers.gclan.pl" target="_blank">
+      <i class="fa-solid fa-headset"></i><span>TeamSpeak</span>
     </a>
-    <a class="tile faceittracker" href="https://faceittracker.net/" target="_blank" style="--i:9">
-      <i class="fa-solid fa-magnifying-glass-chart"></i>
-      <span>FaceitTracker</span>
+    <a class="tile" href="https://faceittracker.net/" target="_blank">
+      <i class="fa-solid fa-magnifying-glass-chart"></i><span>FaceitTracker</span>
     </a>
-    <a class="tile discord" href="https://discord.gg/u42ema3G" target="_blank" style="--i:10">
-      <i class="fa-brands fa-discord"></i>
-      <span>Discord</span>
+    <a class="tile" href="https://discord.gg/u42ema3G" target="_blank">
+      <i class="fa-brands fa-discord"></i><span>Discord</span>
     </a>
   </div>
 
@@ -238,13 +175,14 @@
   <div class="widget-container">
     <h2>FACEIT LAST MATCH STATS</h2>
     <div class="widget-inner">
-      <iframe
-        src="https://strugly.com/inc/widget.php?widget_type=widget-renew-2&player=e07d12cd-82c7-4d03-b1eb-4a3f0eec2724&secret=b744818a49a7703d18108d2d39fbc29d"
-        title="FACEIT Stats Widget">
-      </iframe>
+      <iframe src="https://strugly.com/inc/widget.php?widget_type=widget-renew-2&player=e07d12cd-82c7-4d03-b1eb-4a3f0eec2724&secret=b744818a49a7703d18108d2d39fbc29d"></iframe>
     </div>
   </div>
 
-  <footer class="designed-by">designed by <strong>REFI</strong></footer>
+  <footer>
+    <div>Designed by <strong>REFI</strong></div>
+    <a href="https://discord.gg/u42ema3G" class="button-link">Dołącz do Discorda</a>
+  </footer>
+
 </body>
 </html>
