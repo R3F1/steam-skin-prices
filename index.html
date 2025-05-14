@@ -4,127 +4,66 @@
   <meta charset="UTF-8">
   <title>REFI hub</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- font-awesome + Inter -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: #0d1117;
-      color: #c9d1d9;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 40px 20px;
-      min-height: 100vh;
+      margin: 0; font-family: 'Inter', sans-serif;
+      background-color: #0d1117; color: #c9d1d9;
+      display: flex; flex-direction: column; align-items: center;
+      padding: 40px 20px; min-height: 100vh;
     }
-    header {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-    header img {
-      max-width: 200px;
-      display: block;
-      margin: 0 auto 10px;
-    }
-    header h1 {
-      font-size: 32px;
-      color: #58a6ff;
-      margin: 0;
-    }
-    header p {
-      font-size: 16px;
-      color: #8b949e;
-    }
+    header { text-align: center; margin-bottom: 30px; }
+    header img { max-width: 200px; display: block; margin: 0 auto 10px; }
+    header h1 { font-size: 32px; color: #58a6ff; margin: 0; }
+    header p  { font-size: 16px; color: #8b949e; }
     .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 20px;
-      width: 100%;
-      max-width: 900px;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(140px,1fr));
+      gap: 20px; width:100%; max-width:900px;
     }
     .tile {
-      background-color: #161b22;
-      border-radius: 10px;
-      padding: 20px;
-      text-align: center;
-      text-decoration: none;
-      color: inherit;
-      transition: transform 0.3s, box-shadow 0.3s;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      background: #161b22; border-radius:10px; padding:20px;
+      text-align:center; text-decoration:none; color:inherit;
+      box-shadow:0 2px 6px rgba(0,0,0,0.2);
+      transition:transform .3s, box-shadow .3s;
     }
     .tile:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      transform:translateY(-4px);
+      box-shadow:0 4px 12px rgba(0,0,0,0.4);
     }
-    .tile i {
-      font-size: 26px;
-      margin-bottom: 8px;
-      color: #58a6ff;
-    }
-    .tile span {
-      font-weight: 600;
-      font-size: 15px;
-    }
+    .tile i { font-size:26px; margin-bottom:8px; color:#58a6ff; display:block; }
+    .tile span { font-weight:600; font-size:15px; }
     section {
-      margin-top: 40px;
-      background-color: #161b22;
-      padding: 20px;
-      border-radius: 10px;
-      width: 100%;
-      max-width: 700px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      margin-top:40px; background:#161b22; padding:20px;
+      border-radius:10px; width:100%; max-width:700px;
+      box-shadow:0 2px 6px rgba(0,0,0,0.2);
     }
-    section h2 {
-      font-size: 20px;
-      color: #58a6ff;
-      margin-bottom: 15px;
-      text-align: center;
-    }
-    #hltv-ranking ol {
-      padding-left: 20px;
-    }
-    #hltv-ranking li {
-      margin: 6px 0;
-      font-size: 17px;
-    }
-    .skins-list {
-      list-style: none;
-      padding: 0;
-    }
+    section h2 { font-size:20px; color:#58a6ff; margin-bottom:15px; text-align:center; }
+    #hltv-ranking ol { padding-left:20px; margin:0; }
+    #hltv-ranking li { margin:6px 0; font-size:17px; }
+    .skins-list { list-style:none; padding:0; margin:0; }
     .skins-list li {
-      margin: 8px 0;
-      font-size: 17px;
-      display: flex;
-      justify-content: space-between;
+      display:flex; justify-content:space-between; margin:8px 0;
+      font-size:17px;
     }
     footer {
-      margin-top: auto;
-      text-align: center;
-      font-size: 14px;
-      color: #8b949e;
-      padding: 20px 0;
+      margin-top:auto; text-align:center; padding:20px 0;
+      font-size:14px; color:#8b949e;
     }
     .button-link {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 8px 18px;
-      background-color: #238636;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: bold;
-      transition: background-color 0.3s;
+      display:inline-block; margin-top:10px; padding:8px 18px;
+      background:#238636; color:#fff; text-decoration:none;
+      border-radius:6px; font-weight:bold; transition:background .3s;
     }
-    .button-link:hover {
-      background-color: #2ea043;
-    }
+    .button-link:hover { background:#2ea043; }
   </style>
 </head>
 <body>
 
   <header>
-    <img src="refi-logo.png" alt="Logo REFI">
+    <!-- w tym samym folderze umieść refi-logo.png -->
+    <img src="refi-logo.png" alt="REFI logo">
     <h1>REFI hub</h1>
     <p>Twoje centrum statystyk i linków</p>
   </header>
@@ -164,9 +103,7 @@
 
   <section>
     <h2>Aktualny ranking HLTV (Top 5)</h2>
-    <div id="hltv-ranking">
-      <p>Ładowanie rankingu...</p>
-    </div>
+    <div id="hltv-ranking"><p>Ładowanie…</p></div>
   </section>
 
   <section>
@@ -174,7 +111,7 @@
     <ul class="skins-list">
       <li>Butterfly Knife | Tiger Tooth (FN) <span id="price-skin-1">…</span></li>
       <li>Sport Gloves | Nocts (WW)     <span id="price-skin-2">…</span></li>
-      <li>USP-S | Whiteout (MW)        <span id="price-skin-3">…</span></li>
+      <li>USP-S | Whiteout (MW)         <span id="price-skin-3">…</span></li>
       <li>AK-47 | Case Hardened (FT)    <span id="price-skin-4">…</span></li>
     </ul>
   </section>
@@ -186,34 +123,39 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // HLTV Top 5
-      fetch('https://api.hltv.org/stats/ranking?limit=5')
-        .then(res => res.json())
+      // Proxy przez AllOrigins dla HLTV
+      const hltvProxy = 'https://api.allorigins.win/raw?url=' +
+        encodeURIComponent('https://api.hltv.org/stats/ranking?limit=5');
+
+      fetch(hltvProxy)
+        .then(r => r.json())
         .then(data => {
-          const list = data.map(team => `<li>${team.teamName}</li>`).join('');
+          const list = data.map(t => `<li>${t.teamName}</li>`).join('');
           document.getElementById('hltv-ranking').innerHTML = `<ol>${list}</ol>`;
         })
         .catch(() => {
-          document.getElementById('hltv-ranking').innerHTML = '<p>Nie udało się załadować rankingu.</p>';
+          document.getElementById('hltv-ranking').innerHTML = '<p>Błąd ładowania rankingu.</p>';
         });
 
-      // Skiny i ceny
+      // Skiny – proxy przez AllOrigins
       const skins = [
         { name: 'Butterfly Knife | Tiger Tooth (Factory New)', el: 'price-skin-1' },
         { name: 'Sport Gloves | Nocts (Well-Worn)', el: 'price-skin-2' },
         { name: 'USP-S | Whiteout (Minimal Wear)', el: 'price-skin-3' },
         { name: 'AK-47 | Case Hardened (Field-Tested)', el: 'price-skin-4' }
       ];
+
       skins.forEach(item => {
-        fetch(`https://api.csfloat.com/market/items?search=${encodeURIComponent(item.name)}`)
-          .then(res => res.json())
+        const url = 'https://api.allorigins.win/raw?url=' +
+          encodeURIComponent(`https://api.csfloat.com/market/items?search=${item.name}`);
+        fetch(url)
+          .then(r => r.json())
           .then(list => {
-            const span = document.getElementById(item.el);
-            if (list && list.length && list[0].lowest_price) {
-              span.textContent = '$' + parseFloat(list[0].lowest_price).toFixed(2);
-            } else {
-              span.textContent = 'Brak danych';
+            let price = 'Brak';
+            if (Array.isArray(list) && list[0] && list[0].lowest_price) {
+              price = '$' + parseFloat(list[0].lowest_price).toFixed(2);
             }
+            document.getElementById(item.el).textContent = price;
           })
           .catch(() => {
             document.getElementById(item.el).textContent = 'Błąd';
