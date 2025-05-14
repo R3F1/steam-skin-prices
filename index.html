@@ -51,13 +51,6 @@
       box-shadow:0 2px 6px rgba(0,0,0,0.2);
     }
     section h2 { font-size:20px; color:#58a6ff; margin-bottom:15px; text-align:center; }
-    #hltv-ranking ol { padding-left:20px; margin:0; }
-    #hltv-ranking li { margin:6px 0; font-size:17px; }
-    .skins-list { list-style:none; padding:0; margin:0; }
-    .skins-list li {
-      display:flex; justify-content:space-between; margin:8px 0;
-      font-size:17px;
-    }
     footer {
       margin-top:auto; text-align:center; padding:20px 0;
       font-size:14px; color:#8b949e;
@@ -68,6 +61,9 @@
       border-radius:6px; font-weight:bold; transition:background .3s;
     }
     .button-link:hover { background:#2ea043; }
+    iframe {
+      width: 100%; border: none;
+    }
   </style>
 </head>
 <body>
@@ -114,62 +110,20 @@
 
   <section>
     <h2>Aktualny ranking HLTV (Top 5)</h2>
-    <div id="hltv-ranking"><p>Ładowanie…</p></div>
+    <iframe src="https://hltv.org" height="300"></iframe>
   </section>
 
   <section>
     <h2>Ceny ulubionych skinów</h2>
-    <ul class="skins-list">
-      <li>Butterfly Knife | Tiger Tooth (FN) <span id="price-skin-1">&hellip;</span></li>
-      <li>Sport Gloves | Nocts (WW)         <span id="price-skin-2">&hellip;</span></li>
-      <li>USP-S | Whiteout (MW)             <span id="price-skin-3">&hellip;</span></li>
-      <li>AK-47 | Case Hardened (FT)        <span id="price-skin-4">&hellip;</span></li>
-    </ul>
+    <iframe src="https://pricempire.com/csgo-skins/Butterfly-Knife-Tiger-Tooth-Factory-New" height="180"></iframe>
+    <iframe src="https://pricempire.com/csgo-skins/Sport-Gloves-Nocts-Well-Worn" height="180"></iframe>
+    <iframe src="https://pricempire.com/csgo-skins/USP-S-Whiteout-Minimal-Wear" height="180"></iframe>
+    <iframe src="https://pricempire.com/csgo-skins/AK-47-Case-Hardened-Field-Tested" height="180"></iframe>
   </section>
 
   <footer>
     <div>Designed by <strong>REFI</strong></div>
     <a href="https://discord.gg/u42ema3G" class="button-link">Dołącz do Discorda</a>
   </footer>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // HLTV ranking przez proxy
-      const hltvUrl = 'https://api.hltv.org/stats/ranking?limit=5';
-      const hltvProxy = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(hltvUrl);
-      fetch(hltvProxy)
-        .then(r => r.json())
-        .then(data => {
-          const list = data.map(t => `<li>${t.teamName}</li>`).join('');
-          document.getElementById('hltv-ranking').innerHTML = `<ol>${list}</ol>`;
-        })
-        .catch(() => {
-          document.getElementById('hltv-ranking').innerHTML = '<p>Błąd ładowania rankingu.</p>';
-        });
-
-      const skins = [
-        { name: 'Butterfly Knife | Tiger Tooth (Factory New)', el: 'price-skin-1' },
-        { name: 'Sport Gloves | Nocts (Well-Worn)', el: 'price-skin-2' },
-        { name: 'USP-S | Whiteout (Minimal Wear)', el: 'price-skin-3' },
-        { name: 'AK-47 | Case Hardened (Field-Tested)', el: 'price-skin-4' }
-      ];
-      skins.forEach(item => {
-        const url = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(`https://api.csfloat.com/market/items?search=${item.name}`);
-        fetch(url)
-          .then(r => r.json())
-          .then(list => {
-            let price = 'Brak';
-            if (Array.isArray(list) && list[0] && list[0].lowest_price) {
-              price = '$' + parseFloat(list[0].lowest_price).toFixed(2);
-            }
-            document.getElementById(item.el).textContent = price;
-          })
-          .catch(() => {
-            document.getElementById(item.el).textContent = 'Błąd';
-          });
-      });
-    });
-  </script>
-
 </body>
 </html>
