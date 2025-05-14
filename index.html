@@ -18,101 +18,97 @@
       padding: 40px 20px;
       min-height: 100vh;
     }
-
     header {
       text-align: center;
-      margin-bottom: 40px;
+      margin-bottom: 30px;
     }
-
+    header img {
+      max-width: 200px;
+      display: block;
+      margin: 0 auto 10px;
+    }
     header h1 {
       font-size: 32px;
       color: #58a6ff;
-      margin-bottom: 5px;
+      margin: 0;
     }
-
     header p {
       font-size: 16px;
       color: #8b949e;
-      border-bottom: 1px solid #30363d;
-      padding-bottom: 10px;
     }
-
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
       gap: 20px;
       width: 100%;
       max-width: 900px;
     }
-
     .tile {
       background-color: #161b22;
       border-radius: 10px;
-      padding: 25px 20px;
+      padding: 20px;
       text-align: center;
       text-decoration: none;
       color: inherit;
-      transition: all 0.3s ease;
+      transition: transform 0.3s, box-shadow 0.3s;
       box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
-
     .tile:hover {
       transform: translateY(-4px);
       box-shadow: 0 4px 12px rgba(0,0,0,0.4);
     }
-
     .tile i {
       font-size: 26px;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       color: #58a6ff;
     }
-
     .tile span {
       font-weight: 600;
       font-size: 15px;
     }
-
-    .stats, .widget-container {
-      margin-top: 50px;
+    section {
+      margin-top: 40px;
       background-color: #161b22;
-      padding: 25px;
+      padding: 20px;
       border-radius: 10px;
       width: 100%;
       max-width: 700px;
-      text-align: center;
       box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
-
-    .stats h2,
-    .widget-container h2 {
+    section h2 {
       font-size: 20px;
       color: #58a6ff;
       margin-bottom: 15px;
+      text-align: center;
     }
-
-    .stats p {
+    #hltv-ranking ol {
+      padding-left: 20px;
+    }
+    #hltv-ranking li {
+      margin: 6px 0;
       font-size: 17px;
-      margin: 5px 0;
     }
-
-    .widget-inner iframe {
-      width: 100%;
-      height: 100px;
-      border: none;
+    .skins-list {
+      list-style: none;
+      padding: 0;
     }
-
+    .skins-list li {
+      margin: 8px 0;
+      font-size: 17px;
+      display: flex;
+      justify-content: space-between;
+    }
     footer {
-      margin-top: 60px;
+      margin-top: auto;
       text-align: center;
       font-size: 14px;
       color: #8b949e;
-      padding-bottom: 20px;
+      padding: 20px 0;
     }
-
     .button-link {
       display: inline-block;
-      margin-top: 25px;
-      padding: 10px 20px;
+      margin-top: 10px;
+      padding: 8px 18px;
       background-color: #238636;
       color: white;
       text-decoration: none;
@@ -120,7 +116,6 @@
       font-weight: bold;
       transition: background-color 0.3s;
     }
-
     .button-link:hover {
       background-color: #2ea043;
     }
@@ -129,6 +124,7 @@
 <body>
 
   <header>
+    <img src="refi-logo.png" alt="Logo REFI">
     <h1>REFI hub</h1>
     <p>Twoje centrum statystyk i linków</p>
   </header>
@@ -166,23 +162,65 @@
     </a>
   </div>
 
-  <div class="stats">
-    <h2>Statystyki CSStats.gg</h2>
-    <p>Poziom: <strong>10</strong></p>
-    <p>K/D: <strong>1.25</strong></p>
-  </div>
-
-  <div class="widget-container">
-    <h2>FACEIT LAST MATCH STATS</h2>
-    <div class="widget-inner">
-      <iframe src="https://strugly.com/inc/widget.php?widget_type=widget-renew-2&player=e07d12cd-82c7-4d03-b1eb-4a3f0eec2724&secret=b744818a49a7703d18108d2d39fbc29d"></iframe>
+  <section>
+    <h2>Aktualny ranking HLTV (Top 5)</h2>
+    <div id="hltv-ranking">
+      <p>Ładowanie rankingu...</p>
     </div>
-  </div>
+  </section>
+
+  <section>
+    <h2>Ceny ulubionych skinów</h2>
+    <ul class="skins-list">
+      <li>Butterfly Knife | Tiger Tooth (FN) <span id="price-skin-1">…</span></li>
+      <li>Sport Gloves | Nocts (WW)     <span id="price-skin-2">…</span></li>
+      <li>USP-S | Whiteout (MW)        <span id="price-skin-3">…</span></li>
+      <li>AK-47 | Case Hardened (FT)    <span id="price-skin-4">…</span></li>
+    </ul>
+  </section>
 
   <footer>
     <div>Designed by <strong>REFI</strong></div>
     <a href="https://discord.gg/u42ema3G" class="button-link">Dołącz do Discorda</a>
   </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // HLTV Top 5
+      fetch('https://api.hltv.org/stats/ranking?limit=5')
+        .then(res => res.json())
+        .then(data => {
+          const list = data.map(team => `<li>${team.teamName}</li>`).join('');
+          document.getElementById('hltv-ranking').innerHTML = `<ol>${list}</ol>`;
+        })
+        .catch(() => {
+          document.getElementById('hltv-ranking').innerHTML = '<p>Nie udało się załadować rankingu.</p>';
+        });
+
+      // Skiny i ceny
+      const skins = [
+        { name: 'Butterfly Knife | Tiger Tooth (Factory New)', el: 'price-skin-1' },
+        { name: 'Sport Gloves | Nocts (Well-Worn)', el: 'price-skin-2' },
+        { name: 'USP-S | Whiteout (Minimal Wear)', el: 'price-skin-3' },
+        { name: 'AK-47 | Case Hardened (Field-Tested)', el: 'price-skin-4' }
+      ];
+      skins.forEach(item => {
+        fetch(`https://api.csfloat.com/market/items?search=${encodeURIComponent(item.name)}`)
+          .then(res => res.json())
+          .then(list => {
+            const span = document.getElementById(item.el);
+            if (list && list.length && list[0].lowest_price) {
+              span.textContent = '$' + parseFloat(list[0].lowest_price).toFixed(2);
+            } else {
+              span.textContent = 'Brak danych';
+            }
+          })
+          .catch(() => {
+            document.getElementById(item.el).textContent = 'Błąd';
+          });
+      });
+    });
+  </script>
 
 </body>
 </html>
