@@ -62,8 +62,20 @@
       padding: 10px 0;
       border-bottom: 1px solid #30363d;
       display: flex;
+      align-items: center;
       justify-content: space-between;
       font-size: 17px;
+    }
+    .list li img {
+      width: 40px;
+      height: auto;
+      margin-right: 10px;
+      border-radius: 4px;
+    }
+    .list li .name {
+      display: flex;
+      align-items: center;
+      flex: 1;
     }
     .list li:last-child {
       border-bottom: none;
@@ -147,10 +159,12 @@
   <section>
     <h2>Ceny ulubionych skinów</h2>
     <ul class="list">
-      <li><span>Butterfly Knife | Tiger Tooth (FN)</span> <span>$1,900</span></li>
-      <li><span>Sport Gloves | Nocts (WW)</span> <span>$590</span></li>
-      <li><span>USP-S | Whiteout (MW)</span> <span>$47</span></li>
-      <li><span>AK-47 | Case Hardened (FT)</span> <span>$300</span></li>
+      <li><div class="name"><img src="https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/weapon_knife_butterfly_am_tiger_gold_light_large.42b18e7b79c9c601a4b456d75c27477c5d7e9678.png" alt="">Butterfly Knife | Tiger Tooth (FN)</div> <span>8 000 PLN</span></li>
+      <li><div class="name"><img src="https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/ct_gloves_sporty_hydra_light_large.24b47cc6eec1c9b7e03f1e56f650bd9734c15b18.png" alt="">Sport Gloves | Nocts (WW)</div> <span>2 500 PLN</span></li>
+      <li><div class="name"><img src="https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/weapon_usp_silencer_so_whiteout_light_large.907da0ffbe30f7a23c89d11ff3f8caa86a0b2226.png" alt="">USP-S | Whiteout (MW)</div> <span>200 PLN</span></li>
+      <li><div class="name"><img src="https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/weapon_ak47_aq_oiled_light_large.d7a1c4ad1a11349391f2f81d5adce1596d5bbce7.png" alt="">AK-47 | Case Hardened (FT)</div> <span>1 200 PLN</span></li>
+      <li><div class="name"><img src="https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/weapon_deagle_cu_printstream_deagle_light_large.3eb4204f2ee3bfb6ff695ef931c20b11116c2cd9.png" alt="">Desert Eagle | Printstream (FT)</div> <span>300 PLN</span></li>
+      <li><div class="name"><img src="https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/weapon_ak47_cu_the_empress_light_large.75e61c604d85f5cb9b29e85a98937b429cebbfb2.png" alt="">AK-47 | The Empress (FT)</div> <span>450 PLN</span></li>
     </ul>
   </section>
 
