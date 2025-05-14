@@ -50,19 +50,44 @@
       border-radius:10px; width:100%; max-width:700px;
       box-shadow:0 2px 6px rgba(0,0,0,0.2);
     }
-    section h2 { font-size:20px; color:#58a6ff; margin-bottom:15px; text-align:center; }
+    section h2 {
+      font-size:20px; color:#58a6ff; margin-bottom:15px; text-align:center; border-bottom: 1px solid #30363d; padding-bottom: 10px;
+    }
+    .list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .list li {
+      padding: 10px 0;
+      border-bottom: 1px solid #30363d;
+      display: flex;
+      justify-content: space-between;
+      font-size: 17px;
+    }
+    .list li:last-child {
+      border-bottom: none;
+    }
     footer {
-      margin-top:auto; text-align:center; padding:20px 0;
-      font-size:14px; color:#8b949e;
+      margin-top: auto;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 14px;
+      color: #8b949e;
     }
     .button-link {
-      display:inline-block; margin-top:10px; padding:8px 18px;
-      background:#238636; color:#fff; text-decoration:none;
-      border-radius:6px; font-weight:bold; transition:background .3s;
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 18px;
+      background: #238636;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: background .3s;
     }
-    .button-link:hover { background:#2ea043; }
-    iframe {
-      width: 100%; border: none;
+    .button-link:hover {
+      background: #2ea043;
     }
   </style>
 </head>
@@ -109,16 +134,24 @@
   </div>
 
   <section>
-    <h2>Aktualny ranking HLTV (Top 5)</h2>
-    <iframe src="https://hltv.org" height="300"></iframe>
+    <h2>Ranking HLTV (Top 5 drużyn)</h2>
+    <ul class="list">
+      <li><span>1.</span> FaZe Clan</li>
+      <li><span>2.</span> Natus Vincere</li>
+      <li><span>3.</span> G2 Esports</li>
+      <li><span>4.</span> Team Vitality</li>
+      <li><span>5.</span> Heroic</li>
+    </ul>
   </section>
 
   <section>
     <h2>Ceny ulubionych skinów</h2>
-    <iframe src="https://pricempire.com/csgo-skins/Butterfly-Knife-Tiger-Tooth-Factory-New" height="180"></iframe>
-    <iframe src="https://pricempire.com/csgo-skins/Sport-Gloves-Nocts-Well-Worn" height="180"></iframe>
-    <iframe src="https://pricempire.com/csgo-skins/USP-S-Whiteout-Minimal-Wear" height="180"></iframe>
-    <iframe src="https://pricempire.com/csgo-skins/AK-47-Case-Hardened-Field-Tested" height="180"></iframe>
+    <ul class="list">
+      <li><span>Butterfly Knife | Tiger Tooth (FN)</span> <span>$1,900</span></li>
+      <li><span>Sport Gloves | Nocts (WW)</span> <span>$590</span></li>
+      <li><span>USP-S | Whiteout (MW)</span> <span>$47</span></li>
+      <li><span>AK-47 | Case Hardened (FT)</span> <span>$300</span></li>
+    </ul>
   </section>
 
   <footer>
